@@ -62,10 +62,9 @@
     var name = decodeURI(getParam("name"));
     if (URL == false){alert("invalid sheet id!");}
 
-    if (name != false){
+    if (name != "false"){
     	document.title = name+" Expo Table Numbers";
     	$("#hackathon").text(name+" Expo");
-
     }
 
     Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
