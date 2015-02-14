@@ -6,8 +6,8 @@ h1 {font-size: 36px;}
 table {border-spacing: 0;}
 tbody tr:nth-child(odd) {background-color: #f3f3f3;}
 thead {text-align: left; font-family: Source Sans Pro, Arial, sans-serif;}
-th {text-align: left; font-family: Source Sans Pro, Arial, sans-serif; min-width: 3rem; vertical-align: top; padding: 8px;}
-td {min-width: 3rem; vertical-align: top; padding: 8px;}
+th {text-align: left; font-family: Source Sans Pro, Arial, sans-serif; min-width: 3rem; vertical-align: middle; padding: 8px;}
+td {min-width: 3rem; vertical-align: middle; padding: 8px;}
 td a {line-height: 24px;}
 tr {height: 50px;}
 ul, ol {text-indent: 0; margin: 0; padding-left: 20px;}

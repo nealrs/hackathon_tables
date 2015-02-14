@@ -5,11 +5,11 @@
     <title>Hackathon Expo Table Numbers</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900,400italic|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900,400italic' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="favicon.png">
     <script type='text/javascript' src='js/tabletop1.3.4.js'></script>
     <script type='text/javascript' src='js/sheetsee.js'></script>
-    <link rel='stylesheet' type='text/css' href='assets/style.css'>
+    <link rel='stylesheet' type='text/css' href='css/style.css'>
   </head>
 <body>
   <div class="container">
@@ -26,7 +26,7 @@
   <table>
     <tr><th>Table</th><th>Project</th><th>Sponsor Prizes</th></tr>
       {{#rows}}
-        <tr><td>{{tablenum}}</td><td>{{projectname}}</td><td>{{sponsorprizes}}</td></tr>
+        <tr><td>{{tablenum}}</td><td>{{projectname}}</td><td class="sl">{{sponsorprizes}}</td></tr>
       {{/rows}}
   </table>
 </script>
@@ -45,9 +45,8 @@
 
 
   document.addEventListener('DOMContentLoaded', function() {
-    //var URL = "1kaNq96j0S76A2P_dk82VekiruiWEQXTu5hT0POPywe4"
-
     // usage: http://foo.bar?id=1kaNq96j0S76A2P_dk82VekiruiWEQXTu5hT0POPywe4&name=Hackathon%20Name&filter=hardware
+
     var URL = getParam("id");
     var name = decodeURI(getParam("name"));
     var filter = decodeURI(getParam("filter"));
@@ -69,6 +68,13 @@
   })
 
   function showInfo(data) {
+    // put spaces after commas for better wrapping / mobile.
+    for (var x in data) {
+      var s = data[x]['sponsorprizes'];
+      console.log(s);
+      data[x]['sponsorprizes'] = s.replace(/,/ig, ", ");
+    }
+
     var tableOptions = {"data": data
     , "pagination": 1000, "tableDiv": "#fullTable", "filterDiv": "#fullTableFilter"}
     Sheetsee.makeTable(tableOptions)
