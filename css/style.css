@@ -5,8 +5,8 @@ h1 {font-size: 36px;}
 
 table {border-spacing: 0;}
 tbody tr:nth-child(odd) {background-color: #f3f3f3;}
-thead {text-align: left; font-family: Source Sans Pro, Arial, sans-serif;}
-th {text-align: left; font-family: Source Sans Pro, Arial, sans-serif; min-width: 3rem; vertical-align: middle; padding: 8px;}
+thead {text-align: left; font-family: Roboto, Arial, sans-serif;}
+th {text-align: left; font-family: Roboto, Arial, sans-serif; min-width: 3rem; vertical-align: middle; padding: 8px;}
 td {min-width: 3rem; vertical-align: middle; padding: 8px;}
 td a {line-height: 24px;}
 tr {height: 50px;}
@@ -39,12 +39,6 @@ body.index table {border: 4px solid #CCF4FF; padding: 18px;}
 ::selection {background: #44FFB4;}
 ::-moz-selection {background: #44FFB4;}
 
-/* Table */
-.ssExample table {min-width: 600px;}
-.tHeader {padding: 8px; cursor: pointer; text-align: left;}
-.tHeader::after {content: " \2193 \2191 "; font-size: 10px; padding-left: 3px; cursor: pointer;}
-
-
 /* filter css */
 
 input {
@@ -54,6 +48,7 @@ input {
   min-width:20rem;
   font-size: 16px;
   padding-bottom: 6px;
+  font-family: Roboto;
 }
 
 #header{

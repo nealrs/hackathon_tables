@@ -16,18 +16,42 @@
     <div id="header">
       <h2 id="hackathon">Hackathon Expo</h2>
       <input id="fullTableFilter" type="text" placeholder="Filter by sponsor prize or project name"></input>
+
+    <!--<table>
+      <thead>
+        <tr>
+          <th>Table</th>
+          <th style="min-width:7.5rem;">Project</th>
+          <th>Sponsor Prizes</th>
+        </tr>
+      </thead>
+    </table>-->
+
     </div>
 
 
-    <div id="fullTable" style="margin-top:7rem;"></div>
+    <div id="fullTable" style="margin-top:5.5rem;"></div>
 </div>
 
 <script id="fullTable_template" type="text/html">
   <table>
-    <tr><th>Table</th><th>Project</th><th>Sponsor Prizes</th></tr>
+    <thead>
+      <tr>
+        <th>Table</th>
+        <th>Project</th>
+        <th>Sponsor Prizes</th>
+      </tr>
+    </thead>
+
+    <tbody>
       {{#rows}}
-        <tr><td>{{tablenum}}</td><td>{{projectname}}</td><td class="sl">{{sponsorprizes}}</td></tr>
+        <tr>
+          <td>{{tablenum}}</td>
+          <td>{{projectname}}</td>
+          <td class="sl">{{sponsorprizes}}</td>
+        </tr>
       {{/rows}}
+    </tobdy>
   </table>
 </script>
 
@@ -71,7 +95,6 @@
     // put spaces after commas for better wrapping / mobile.
     for (var x in data) {
       var s = data[x]['sponsorprizes'];
-      console.log(s);
       data[x]['sponsorprizes'] = s.replace(/,/ig, ", ");
     }
 
