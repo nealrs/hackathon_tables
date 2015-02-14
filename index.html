@@ -5,31 +5,21 @@
     <title>Hackathon Expo Table Numbers</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900,400italic|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900,400italic|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="favicon.png">
     <script type='text/javascript' src='js/tabletop1.3.4.js'></script>
     <script type='text/javascript' src='js/sheetsee.js'></script>
     <link rel='stylesheet' type='text/css' href='assets/style.css'>
   </head>
-  <style>
-    #Pagination {border-top: 4px solid #CCF4FF; margin: 10px 0px; padding-top: 10px; display: inline-block;}
-    #Pagination a {cursor: pointer;}
-    .no-pag {color: #acacac; border: none;}
-    .no-pag:hover {color: #acacac;}
-    input {border: none; border-bottom: 1px solid #333;margin: 10px 0px; width: 200px; font-size: 16px; padding-bottom: 6px;}
-    .tHeader {padding: 8px; cursor: pointer; text-align: left;}
-    .photo {display: inline-block; float: left; width: 100px;}
-    #photogrid {overflow: auto;}
-  </style>
 <body>
   <div class="container">
-    <h1 id="hackathon">Hackathon Expo</h1>
-    <!--<p><em><a href="#" target="_blank">spreadsheet</a></em><p>-->
+    <div id="header">
+      <h2 id="hackathon">Hackathon Expo</h2>
+      <input id="fullTableFilter" type="text" placeholder="Filter by sponsor prize or project name"></input>
+    </div>
 
-    <input id="fullTableFilter" type="text" placeholder="filter by sponsor prize.."></input>
 
-
-    <div id="fullTable"></div>
+    <div id="fullTable" style="margin-top:7rem;"></div>
 </div>
 
 <script id="fullTable_template" type="text/html">
@@ -56,16 +46,24 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     //var URL = "1kaNq96j0S76A2P_dk82VekiruiWEQXTu5hT0POPywe4"
-    
-    // usage: http://foo.bar?id=123456769xx92&name=Hackathon%20Name
+
+    // usage: http://foo.bar?id=1kaNq96j0S76A2P_dk82VekiruiWEQXTu5hT0POPywe4&name=Hackathon%20Name&filter=hardware
     var URL = getParam("id");
     var name = decodeURI(getParam("name"));
-    if (URL == false){alert("invalid sheet id!");}
+    var filter = decodeURI(getParam("filter"));
 
+    if (URL == false){alert("invalid sheet id!");}
     if (name != "false"){
-    	document.title = name+" Expo Table Numbers";
+    	document.title = name+" Expo";
     	$("#hackathon").text(name+" Expo");
     }
+
+    /*
+    if (filter != "false"){
+      $("#fullTableFilter").val(filter);
+      $("#fullTableFilter").focus();
+    }
+    */
 
     Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
   })
