@@ -17,38 +17,30 @@
       <h2 id="hackathon">Hackathon Expo</h2>
       <input id="fullTableFilter" type="text" placeholder="Filter by sponsor prize or project name"></input>
 
-    <!--<table>
+    <table>
       <thead>
         <tr>
-          <th>Table</th>
-          <th style="min-width:7.5rem;">Project</th>
-          <th>Sponsor Prizes</th>
+          <th class="number">Table</th>
+          <th class="name">Project</th>
+          <th class="prize">Sponsor Prizes</th>
         </tr>
       </thead>
-    </table>-->
+    </table>
 
     </div>
 
 
-    <div id="fullTable" style="margin-top:5.5rem;"></div>
+    <div id="fullTable"></div>
 </div>
 
 <script id="fullTable_template" type="text/html">
   <table>
-    <thead>
-      <tr>
-        <th>Table</th>
-        <th>Project</th>
-        <th>Sponsor Prizes</th>
-      </tr>
-    </thead>
-
     <tbody>
       {{#rows}}
         <tr>
-          <td>{{tablenum}}</td>
-          <td>{{projectname}}</td>
-          <td class="sl">{{sponsorprizes}}</td>
+          <td class="number">{{tablenum}}</td>
+          <td class="name">{{projectname}}</td>
+          <td class="prize">{{sponsorprizes}}</td>
         </tr>
       {{/rows}}
     </tobdy>
