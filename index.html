@@ -15,7 +15,7 @@
   <div class="container">
     <div id="header">
       <h2 id="hackathon">Hackathon Expo</h2>
-      <input id="fullTableFilter" type="text" placeholder="Filter by sponsor prize or project name"></input>
+      <input id="fullTableFilter" type="text" placeholder="Filter by sponsor prize or project name or whatever"></input>
 
     <table>
       <thead>
@@ -23,6 +23,12 @@
           <th class="number">Table</th>
           <th class="name">Project</th>
           <th class="prize">Sponsor Prizes</th>
+
+          <!-- Need more headers? Go nuts. But be warned, you'll need to write new CSS styles & classes for these columns of they'll look like crap on mobile. -->
+          <!--<th class="foo">Foo</th>
+          <th class="bar">Bar</th>
+          <th class="baz">Baz</th>-->
+
         </tr>
       </thead>
     </table>
@@ -39,8 +45,14 @@
       {{#rows}}
         <tr>
           <td class="number">{{tablenum}}</td>
-          <td class="name">{{projectname}}</td>
+          <td class="name"><a href="{{projectlink}}">{{projectname}}</a></td>
           <td class="prize">{{sponsorprizes}}</td>
+
+          <!-- uncomment these rows & the ones above if you want to add more columns -->
+          <!--<td class="foo">{{foo}}</td>
+          <td class="bar">{{bar}}</td>
+          <td class="baz">{{baz}}</td>-->
+
         </tr>
       {{/rows}}
     </tobdy>
@@ -73,15 +85,26 @@
     	$("#hackathon").text(name+" Expo");
     }
 
-    /*
     if (filter != "false"){
-      $("#fullTableFilter").val(filter);
-      $("#fullTableFilter").focus();
-    }
-    */
+      $("#fullTableFilter").val(filter).trigger("change").change();
+      console.log($("#fullTableFilter").val());
+    };
 
-    Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
-  })
+    Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } );
+  });
+
+  ///////////////////
+  //this pre-setting the filter business just won't work.
+  function filterUpdate(e){
+    clearTimeout(filterUpdate.timeout);
+    filterUpdate.timeout = setTimeout(function(){
+        $("#fullTableFilter").keyup();
+        console.log("change & keyup");
+    }, 100);
+  }
+
+  $('#fullTableFilter').on('blur change',filterUpdate);
+  ///////////////////
 
   function showInfo(data) {
     // put spaces after commas for better wrapping / mobile.
