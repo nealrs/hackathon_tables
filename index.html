@@ -86,25 +86,11 @@
     }
 
     if (filter != "false"){
-      $("#fullTableFilter").val(filter).trigger("change").change();
-      console.log($("#fullTableFilter").val());
+      $("#fullTableFilter").val(filter);
     };
 
     Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } );
   });
-
-  ///////////////////
-  //this pre-setting the filter business just won't work.
-  function filterUpdate(e){
-    clearTimeout(filterUpdate.timeout);
-    filterUpdate.timeout = setTimeout(function(){
-        $("#fullTableFilter").keyup();
-        console.log("change & keyup");
-    }, 100);
-  }
-
-  $('#fullTableFilter').on('blur change',filterUpdate);
-  ///////////////////
 
   function showInfo(data) {
     // put spaces after commas for better wrapping / mobile.
@@ -117,6 +103,7 @@
     , "pagination": 1000, "tableDiv": "#fullTable", "filterDiv": "#fullTableFilter"}
     Sheetsee.makeTable(tableOptions)
     Sheetsee.initiateTableFilter(tableOptions)
+    Sheetsee.searchTable(tableOptions, $("#fullTableFilter").val())
   }
 
 </script>
